@@ -24,12 +24,18 @@
     <ClCompile Include="SmartArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="group.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Student.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SmartArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="group.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

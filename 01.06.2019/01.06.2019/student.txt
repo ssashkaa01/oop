@@ -1,5 +1,0 @@
-Name: 433443
-Age: 1985
-Year of Birth: 34
-Address: 34
-Rating: 4

@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 #include <ctime>
-#include <fstream>
 #pragma warning(disable : 4996)
 
 using namespace std;
@@ -14,19 +13,22 @@ Student::Student()
 	yearOfBirth = 0000;
 	address = "undefined";
 	rating = 0.0;
+	skips = 0;
 }
 
 Student::Student(
 	string _name,
 	int _yearOfBirth,
 	string _address,
-	double _rating
-)
+	double _rating,
+	int _skips
+) 
 {
 	name = _name;
 	yearOfBirth = _yearOfBirth;
 	address = _address;
 	rating = _rating;
+	skips = _skips;
 	setAge(_yearOfBirth);
 }
 
@@ -37,6 +39,7 @@ void Student::Show() const
 	cout << "Year of Birth: " << yearOfBirth << endl;
 	cout << "Address: " << address << endl;
 	cout << "Rating: " << rating << endl;
+	cout << "Skips: " << skips << endl;
 }
 
 double Student::getRating() const
@@ -44,7 +47,18 @@ double Student::getRating() const
 	return rating;
 }
 
-void Student::setAge(int _yearOfBirth)
+int Student::getSkips() const
+{
+	return skips;
+}
+
+Student Student::getGoodStudent(Student &st) const
+{
+
+	return (this->rating > st.getRating()) ? *this : st;
+}
+
+void Student::setAge(int _yearOfBirth) 
 {
 
 	time_t now = time(0);
@@ -55,42 +69,17 @@ void Student::setAge(int _yearOfBirth)
 void Student::Fill() {
 	cout << "Name: " << endl;
 	cin >> name;
-	cout << "Year of Birth: " << endl;
+	cout << "Year of Birth: "<< endl;
 	cin >> yearOfBirth;
 	cout << "Address: " << endl;
 	cin >> address;
 	cout << "Rating: " << endl;
 	cin >> rating;
 
+	cout << "Skips: " << endl;
+	cin >> skips;
+
 	setAge(yearOfBirth);
 
 }
 
-void Student::writeFile() const {
-
-	ofstream out("student.txt", ios_base::out | ios::trunc);
-
-	out << "Name: " << name << endl;
-	out << "Age: " << age << endl;
-	out << "Year of Birth: " << yearOfBirth << endl;
-	out << "Address: " << address << endl;
-	out << "Rating: " << rating << endl;
-	
-	out.close();
-}
-void Student::readFile() const {
-
-	ifstream in("student.txt", ios_base::in);
-
-	string s;
-
-	while (!in.eof()) {
-
-		getline(in, s);
-
-		cout << s << endl;
-
-	}
-
-	in.close();
-}
