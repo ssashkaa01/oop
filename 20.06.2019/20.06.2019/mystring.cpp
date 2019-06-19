@@ -34,7 +34,11 @@ mystring::mystring(const mystring &mystr)
 
 	this->str = new char[len + 1];
 
-	strcpy_s(str, len + 1, mystr.str);
+	for (int i = 0; i < this->len; i++) {
+		this->str[i] = mystr.str[i];
+	}
+	//strcpy_s(str, len + 1, mystr.str);
+	this->str[this->len] = '\0';
 }
 
 mystring::mystring(mystring &&mystr)
@@ -42,11 +46,10 @@ mystring::mystring(mystring &&mystr)
 
 	cout << "move" << endl;
 
-	this->len = mystr.len;
-
 	this->str = mystr.str;
 	
-	
+	this->len = mystr.len;
+
 	mystr.str = nullptr;
 }
 
@@ -79,6 +82,8 @@ void mystring::SetStringFromKeyboard() {
 
 }
 void mystring::showString() {
+
+	if (str == nullptr) return;
 
 	cout << str << endl;
 }
@@ -127,12 +132,11 @@ mystring::~mystring()
 mystring mystring::operator=(mystring& const s)
 {
 
-	mystring news;
+	
+	SetString(s.str);
+	reLen(s.str);
 
-	news.SetString(s.str);
-	news.reLen(s.str);
-
-	return news;
+	return *this;
 }
 void mystring::operator+(mystring& const s)
 {
