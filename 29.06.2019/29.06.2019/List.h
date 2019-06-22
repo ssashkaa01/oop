@@ -54,9 +54,10 @@ public:
 
 	int searchNumberPosition(int);
 
-	List sort();
+	List sort(bool);
 
-	List &operator=(List &);
+	List &operator=(const List &);
+	List &operator=(List &&);
 
 	// Показ всіх елементів
 	void ShowList() const;

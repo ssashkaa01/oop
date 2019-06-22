@@ -172,43 +172,93 @@ int List::searchNumberPosition(int number)
 	return 0;
 }
 
-List List::sort()
+List List::sort(bool sortUP)
 {
+	List *newList = new List;
 
-	List *newList = new List();
+	Element *temp = head;
+
+	while (temp != nullptr) {
+
+		newList->AddTail(temp->num);
+		temp = temp->next;
+
+	}
 
 	//Пошук голови
-	Element *temp = head;
+	temp = newList->head;
 	int buf = 0;
 
 	for (int i = 0; i < size; i++) {
 
 		for (int j = 0; j < size - 1; j++) {
 
-			if (temp->num > temp->next->num) {
-				
-				//newList->AddHead(temp->next->num);
-				buf = temp->next->num;
-				temp->next->num = temp->num;
-				temp->num = buf;
+			if (sortUP) {
+				if (temp->num > temp->next->num) {
+
+					//newList->AddTail(temp->next->num);
+					buf = temp->next->num;
+					temp->next->num = temp->num;
+					temp->num = buf;
+				}
 			}
+			else {
+				if (temp->num < temp->next->num) {
+
+					//newList->AddTail(temp->next->num);
+					buf = temp->next->num;
+					temp->next->num = temp->num;
+					temp->num = buf;
+				}
+			}
+		
 
 			temp = temp->next;
 
 		}
 
-		temp = this->head;
+		temp = newList->head;
 	}
 
+	return *newList;
+}
+
+List &List::operator=(const List &newList)
+{
+
+	// copy
+	cout << "copy" << endl;
+	Element *temp = head;
+	
+	while (temp != nullptr) {
+
+		temp = temp->next;
+		delete[] temp->prev;
+	}
+
+	temp = newList.head;
+
+	while (temp != nullptr) {
+
+		this->AddTail(temp->num);
+		temp = temp->next;
+		
+	}
+	
 	return *this;
 }
 
-List &List::operator=(List &newList)
+List &List::operator=(List &&newList)
 {
+	cout << "move" << endl;
 	this->size = newList.size;
 	this->head = newList.head;
 	this->tail = newList.tail;
-	
+
+	newList.size = 0;
+	newList.head = nullptr;
+	newList.tail = nullptr;
+
 	return *this;
 }
 

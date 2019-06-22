@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-void main()
+int main()
 {
 	List list;
 	List list2;
@@ -16,8 +16,8 @@ void main()
 //	list.DeleteFromIndex(2);
 	list.ShowList();
 	cout << "--------------------\n";
-	list = list.sort();
-	
+	list2 = list.sort(false);
+	//list2.AddTail(50);
 	cout << "--------------------\n";
 
 	if (list.searchNumber(10)) {
@@ -40,8 +40,11 @@ void main()
 	cout << "--------------------\n";*/
 
 	list.Add(40, 29);
+	list2.ShowList();
+	cout << "--------------------\n";
 	list.ShowList();
 	cout << "--------------------\n";
 
 	system("pause");
+	return 0;
 }
