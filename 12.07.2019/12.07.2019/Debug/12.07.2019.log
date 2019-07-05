@@ -1,0 +1,3 @@
+﻿  Source.cpp
+c:\users\ssashkoo\source\repos\oop\12.07.2019\12.07.2019\source.cpp(47): warning C4244: '+=': conversion from '__int64' to 'int', possible loss of data
+  12.07.2019.vcxproj -> C:\Users\SSASHKOO\source\repos\OOP\12.07.2019\Debug\12.07.2019.exe
