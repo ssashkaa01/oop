@@ -1,24 +1,24 @@
 #include <iostream>
 #include <limits>
 
-
 using namespace std;
+
 // Function to check integer overflow 
-int check_overflow(int num1, int num2)
+bool check_overflow(int num1, int num2)
 {
 	// Checking if addition will cause overflow 
 	if (num1 > INT_MAX - num2)
-		return -1;
+		return false;
 
 	// No overflow occured 
 	else
-		return num1 + num2;
+		return true;
 }
 
 
 int main() {
 
-	char str[] = "23323343443432";
+	char str[] = "34343444443";
 	int numb = 0;
 
 	try {
@@ -32,7 +32,6 @@ int main() {
 
 			if (str[i] < 48 || str[i] > 57) {
 
-				//if(str[0])
 				throw 1;
 			}
 			counter *= 10;
@@ -43,14 +42,13 @@ int main() {
 			tmp = (int(str[i]) - 48);
 			tmp = tmp * counter;
 			
-			if(true){
+			//Check max int 
+			if(check_overflow(numb, tmp)){
 				numb += tmp;
 			}
 			else {
 				throw 2;
 			}
-
-
 		}
 
 		cout << numb << endl;
@@ -69,8 +67,6 @@ int main() {
 			break;
 		}
 	}
-
-
 
 	system("pause");
 	return 0;
