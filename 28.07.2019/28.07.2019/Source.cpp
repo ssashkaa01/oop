@@ -8,14 +8,12 @@ class Spots
 {
 private:
 
-	bool win; // check if you win
 	int action; // your action
 	array <int, 16> place; // places 
 
 public:
 
 	Spots() {
-		this->win = false;
 		this->CreateMap();
 	}
 
