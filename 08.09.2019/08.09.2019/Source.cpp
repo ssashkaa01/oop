@@ -103,13 +103,15 @@ public:
 			return false;
 	}
 
-	void ViewAction()
+	void ViewAction() const
 	{
-		cout << "User " << user << endl;
-		cout << "v1 " << v1 << endl;
-		cout << "v2 " << v2 << endl;
 		cout << "1 - action " << a1 << endl;
 		cout << "2 - action " << a2 << endl;
+	}
+
+	void ViewCounterToGate() const
+	{
+		cout << "Counter to gate " << counter << endl;
 	}
 
 	void DoAction(int action)
@@ -144,6 +146,11 @@ public:
 		this->data = data;
 	}
 
+	void ViewAction() const
+	{
+		cout << "3 - save " << endl;
+		cout << "4 - restore " << endl;
+	}
 };
 
 
@@ -158,6 +165,8 @@ int main()
 	while (!s.CheckGameOver())
 	{
 		s.ViewAction();
+		m.ViewAction();
+		s.ViewCounterToGate();
 
 		cin >> action;
 
